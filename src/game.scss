@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
+
+* {
+  font-family: "Comfortaa", cursive;
+}
+
+#game {
+  background-image: linear-gradient(#1fa5ff 0% 30%, #57f9ff 70% 100%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiles {
+  --cell-size: 15vmin;
+  --shadow-opacity: 0.4;
+  background-color: rgba(#000000, 0.15);
+  padding: 10vmin;
+  border-radius: 5vmin;
+  display: grid;
+  grid-template-rows: repeat(3, var(--cell-size));
+  grid-template-columns: repeat(3, var(--cell-size));
+  grid-gap: 1.75vmin;
+  box-shadow: 0 1.5vmin rgba(#000000, var(--shadow-opacity));
+}
+
+.tile {
+  --shadow-size: 0.75vmin;
+  --transition-time: 150ms;
+  background-color: #ffc417;
+  background-image: linear-gradient(to bottom right, rgba(#ffffff, 0.4) 0 30%, rgba(#ffffff, 0) 70% 100%);
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 2vmin;
+  outline: none;
+  box-shadow:
+    0 var(--shadow-size) rgba(#000000, var(--shadow-opacity)),
+    0 0 0 rgba(#000000, var(--shadow-opacity)) inset;
+  transition:
+    background-color var(--transition-time) ease-out,
+    box-shadow var(--transition-time) ease-out,
+    transform var(--transition-time) ease-out;
+  &:active:not(.disabled), &.active, &.disabled.active {
+    box-shadow:
+      0 0 rgba(#000000, var(--shadow-opacity)),
+      0 var(--shadow-size) calc(var(--shadow-size) * 2) rgba(#000000, var(--shadow-opacity)) inset;
+    transform: translateY(var(--shadow-size));
+  }
+  &.disabled {
+    background-color: #9f9f9f;
+  }
+  &.active {
+    background-color: #e2e2e2;
+  }
+  &.match {
+    background-color: #ffe11f;
+  }
+}
+
+.turn {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  vertical-align: top;
+}
+
+.turn-0 {
+  --draw-time: 250ms;
+  position: relative;
+  &:before, &:after {
+    content: "";
+    background-color: #0049bf;
+    width: 12%;
+    height: 0;
+    position: absolute;
+    top: 22%;
+    transform-origin: top center;
+  }
+  &:before {
+    left: 15.5%;
+    transform: rotate(-45deg);
+    animation: turn-0 var(--draw-time) ease-out forwards;
+  }
+  &:after {
+    right: 15.5%;
+    transform: rotate(45deg);
+    animation: turn-0 var(--draw-time) ease-out var(--draw-time) forwards;
+  }
+}
+
+@keyframes turn-0 {
+  0%   { height: 0; }
+  100% { height: 80%; }
+}
+
+.turn-1 {
+  // circumference = 2 * PI * 10 (rounded to 10 thousandths)
+  transform: rotate(-90deg);
+  animation: turn-1 500ms ease-out forwards;
+}
+
+@keyframes turn-1 {
+  0%   { stroke-dasharray: 0 62.8319; }
+  100% { stroke-dasharray: 62.8319 62.8319; }
+}
+
+.modal-window {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: transform 250ms ease-out;
+  &.shown {
+    transform: scale(1);
+  }
+}
+
+.dialog-box {
+  font-size: 16px;
+  text-align: center;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(#dfdfdf, 0.90) 0% 30%,
+    rgba(#ffffff, 0.90) 70% 100%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    padding: 0;
+    margin: 0 0 0.5em 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.dialog-content {
+  padding: 0.5em 0;
+}
+
+.btn {
+  --shadow-size: 0.75vmin;
+  --shadow-opacity: 0.5;
+  padding: 0.5em 0.8em;
+  &:active {
+    --shadow-opacity: 0.25;
+  }
+}
+
+.btn-turn {
+  width: 3em;
+  height: 3em;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.text-bold {
+  font-weight: bold;
+}
