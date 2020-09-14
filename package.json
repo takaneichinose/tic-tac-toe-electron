@@ -6,7 +6,8 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack",
-    "debug": "webpack --mode development",
+    "build-dev": "webpack --mode development",
+    "build-start": "webpack --mode development && electron .",
     "start": "electron ."
   },
   "repository": {
@@ -22,12 +23,12 @@
   "dependencies": {},
   "devDependencies": {
     "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
     "css-loader": "^4.3.0",
     "electron": "^10.1.1",
+    "extract-loader": "^5.1.0",
     "mini-css-extract-plugin": "^0.11.2",
     "normalize.css": "^8.0.1",
-    "object-assign": "^4.1.1",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sass": "^1.26.10",

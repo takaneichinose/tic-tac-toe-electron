@@ -7,42 +7,37 @@ module.exports = {
   devtool: "inline-source-map",
   mode: "production",
   module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(css|scss)?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sassOptions: {
-                outputStyle: "compressed"
-              }
-            }
-          }
-        ]
-      }
-    ]
+    rules: [{
+      test: /\.(ts|tsx)?$/,
+      use: "ts-loader",
+      exclude: /node_modules/
+    }, {
+      test: /\.(css|scss)?$/,
+      exclude: /node_modules/,
+      use: [
+        process.env.NODE_ENV !== "production"
+          ? "style-loader"
+          : MiniCssExtractPlugin.loader,
+        "css-loader", {
+          loader: "sass-loader",
+          options: { sassOptions: { outputStyle: "compressed" } }
+        }
+      ]
+    }]
   },
   resolve: {
-    extensions: ["tsx", "ts", "js", "scss", "sass", "css"]
+    extensions: [".tsx", ".ts", ".js", ".scss", ".sass", ".css"]
   },
   output: {
     filename: "game.js",
+    chunkFilename: "scripts.js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/dist/"
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "game.css",
-      chunkFilename: "game.css",
+      chunkFilename: "styles.css",
       path: path.resolve(__dirname, "dist"),
       publicPath: "/dist/"
     }),

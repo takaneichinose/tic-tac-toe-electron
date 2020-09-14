@@ -1,7 +1,14 @@
+@import "../node_modules/normalize.css/normalize.css";
 @import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
 
 * {
   font-family: "Comfortaa", cursive;
+}
+
+body {
+  background-color: #000000;
+  width: 100vw;
+  height: 100vh;
 }
 
 #game {

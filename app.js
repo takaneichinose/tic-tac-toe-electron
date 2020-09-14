@@ -11,6 +11,7 @@ function createWindow () {
 
   win.loadFile("./dist/game.html");
 
+  // Open the developer's tool
   win.webContents.openDevTools();
 }
 
@@ -21,7 +22,6 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
-//"start": "webpack && electron ."
 
 app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
