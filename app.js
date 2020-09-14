@@ -12,7 +12,7 @@ function createWindow () {
   win.loadFile("./dist/game.html");
 
   // Open the developer's tool
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);

@@ -21,3 +21,13 @@ export enum Matches {
   Two = 2,
   One = 4
 }
+
+// Current step of the shown dialog
+export enum DialogStep {
+  Top = 0,
+  Opponent = 1,
+  Player = 2,
+  Difficulty = 3,
+  Game = 4
+}
+
