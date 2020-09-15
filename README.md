@@ -1,6 +1,8 @@
 # Tic Tac Toe VS AI
 This is a reimplementation of Tic Tac Toe Game with NodeJS, ElectronJS, Webpack, Typescript, and ReactJS
 
+I used [electron-packager](https://github.com/electron/electron-packager) in package distribution.
+
 ## Description
 
 TicTacToe game with multiple options:
@@ -46,3 +48,15 @@ Run these commands on the system console.
 1. Run the project.
 
    ``` npm start ```
+
+1. Distribute the project.
+
+   Binaries can be created by running the below npm commands:
+   
+   ``` npm run build ```
+   
+   Just to ensure that the source is built.
+   
+   ``` npm run dist-all ```
+   
+   Create distributions in all of the platforms.
