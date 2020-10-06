@@ -9,7 +9,7 @@ TicTacToe game with multiple options:
 
 I made this game to practice my skill in creating AI (Artificial Intelligence).
 
-I used VueJS v2.6.11 to make all of the functionalities.
+I used ReactJS to make all of the functionalities.
 
 You may choose your opponent whether if it is human or AI.
 
